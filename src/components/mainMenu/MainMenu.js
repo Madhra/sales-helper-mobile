@@ -26,9 +26,9 @@ function MainMenu() {
 
                 <TouchableOpacity onPress={() => handleClick('Entregas')}>
                     <View style={MainMenuStyles.boton2}>
-                        <Text style={MainMenuStyles.h3}>Envios</Text>
+                        <Text style={MainMenuStyles.h3}>Pedidos</Text>
                         <FontAwesome5 name="shipping-fast" size={40} color="black" />
-                        <Text style={MainMenuStyles.h3}>Administra tus envios</Text>
+                        <Text style={MainMenuStyles.h3}>Administra tus pedidos</Text>
                     </View>
                 </TouchableOpacity>
                 {id === 'Ventas' ? <Sales /> : <Shipments />}

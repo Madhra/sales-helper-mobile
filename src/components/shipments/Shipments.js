@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, View} from 'react-native';
 import AddShipmentProductForm from "../AddShipmentProductForm/AddShipmentProductForm";
 import AddShipmentForm from "../AddShipmentForm/AddShipmentForm";
 import Checkbox from 'expo-checkbox';
 import shipmentsStyles from "./shipmentsStyles";
-import {CheckBox} from "react-native-web";
+import Toast from "react-native-toast-message";
 
 function Shipments(){
     const [shipments, setShipments] = useState([]);
     const [checkbox, setCheckbox] = useState([]);
 
     useEffect(() => {
-        setCheckbox(prevCheck => [...prevCheck, false])
-    }, [shipments])
+        setCheckbox(prevCheck => [...prevCheck, false]);
+        showToast();
+    }, [shipments]);
 
     const addShipment = (newShipment) => {
         setShipments(prevShipment => [...prevShipment, newShipment]);
@@ -43,9 +44,17 @@ function Shipments(){
         setCheckbox(newArray);
     }
 
+    const showToast = () => {
+        Toast.show({
+            type: 'success',
+                text1: 'Pedido agregado correctamente',
+            text2: 'This is some something 👋'
+        });
+    }
+
     return(
         <>
-            <Text style={shipmentsStyles.envios}>Envios</Text>
+            <Text style={shipmentsStyles.envios}>Pedidos</Text>
                 <View style={shipmentsStyles.contenido}>
                     {shipments ? shipments.map((element, index) => {
                         return (
@@ -88,6 +97,10 @@ function Shipments(){
                     }): null}
                 </View>
             <AddShipmentForm addShipment={addShipment}/>
+            <Toast
+                position={"bottom"}
+                bottomOffset={950}
+            />
         </>
     )
 }

@@ -59,7 +59,7 @@ const ShipmentsStyles = StyleSheet.create({
     },
     textoProdcutos: {
         fontSize: 20,
-    }
+    },
 });
 
 export default ShipmentsStyles;
